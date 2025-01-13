@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerce.API.Context;
 
@@ -11,9 +12,10 @@ using eCommerce.API.Context;
 namespace eCommerce.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250113211642_collum_father_name")]
+    partial class collum_father_name
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,68 +106,6 @@ namespace eCommerce.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductDepartments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Electronics"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Fashion"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Home and Kitchen"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Sports and Outdoors"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Health and Beauty"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Toys and Games"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Books"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Automotive"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Groceries"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Pet Supplies"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "Office Supplies"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Name = "Baby Products"
-                        });
                 });
 
             modelBuilder.Entity("eCommerce.Models.Models.User", b =>

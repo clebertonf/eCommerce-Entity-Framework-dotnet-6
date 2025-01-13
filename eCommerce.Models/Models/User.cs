@@ -9,6 +9,7 @@ public class User
     public string? Rg { get; set; }
     public string Cpf { get; set; }  = null!;
     public string? MotherName { get; set; }
+    public string? FatherName { get; set; }
     public string? RegistrationStatus { get; set; }
     public DateTimeOffset RegistrationDate { get; set; }
     public Contact? Contact { get; set; }
