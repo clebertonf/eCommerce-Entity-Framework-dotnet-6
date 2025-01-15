@@ -4,5 +4,5 @@ public class Sector
 {
     public int Id { get; set; }
     public string Name { get; set; } = null!;
-    public ICollection<Employee>? Employees { get; set; }
+    public ICollection<EmployeeSector>? EmployeeSectors { get; set; }
 }
