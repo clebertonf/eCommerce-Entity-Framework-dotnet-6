@@ -7,4 +7,5 @@ public class Vehicle
     public string Plate { get; set; } = null!;
     public int EmployeeId { get; set; }
     public ICollection<Employee>? Employees { get; set; }
+    public ICollection<EmployeeVehicle>? EmployeeVehicles { get; set; }
 }

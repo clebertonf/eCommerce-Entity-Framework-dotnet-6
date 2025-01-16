@@ -7,4 +7,6 @@ public class Employee
     public ICollection<Vehicle>? Vehicles { get; set; }
     public ICollection<EmployeeSector>? EmployeeSectors { get; set; }
     public ICollection<EmployeeClass>? EmployeeClasses { get; set; }
+    
+    public ICollection<EmployeeVehicle>? EmployeeVehicles { get; set; }
 }

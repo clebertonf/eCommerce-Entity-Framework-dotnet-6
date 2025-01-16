@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerceConsole.Office.Context;
 
@@ -11,9 +12,10 @@ using eCommerceConsole.Office.Context;
 namespace eCommerceConsole.Office.Migrations
 {
     [DbContext(typeof(EcommerceOfficeContext))]
-    partial class EcommerceOfficeContextModelSnapshot : ModelSnapshot
+    [Migration("20250115201420_add_seed_employee_class")]
+    partial class add_seed_employee_class
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -162,80 +164,62 @@ namespace eCommerceConsole.Office.Migrations
                         {
                             EmployeeId = 1,
                             SectorId = 10,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 20, 22, 29, 343, DateTimeKind.Unspecified).AddTicks(6144), new TimeSpan(0, -3, 0, 0, 0))
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 17, 14, 20, 549, DateTimeKind.Unspecified).AddTicks(504), new TimeSpan(0, -3, 0, 0, 0))
                         },
                         new
                         {
                             EmployeeId = 2,
                             SectorId = 9,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 20, 22, 29, 343, DateTimeKind.Unspecified).AddTicks(6169), new TimeSpan(0, -3, 0, 0, 0))
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 17, 14, 20, 549, DateTimeKind.Unspecified).AddTicks(532), new TimeSpan(0, -3, 0, 0, 0))
                         },
                         new
                         {
                             EmployeeId = 3,
                             SectorId = 8,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 20, 22, 29, 343, DateTimeKind.Unspecified).AddTicks(6170), new TimeSpan(0, -3, 0, 0, 0))
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 17, 14, 20, 549, DateTimeKind.Unspecified).AddTicks(534), new TimeSpan(0, -3, 0, 0, 0))
                         },
                         new
                         {
                             EmployeeId = 4,
                             SectorId = 7,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 20, 22, 29, 343, DateTimeKind.Unspecified).AddTicks(6172), new TimeSpan(0, -3, 0, 0, 0))
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 17, 14, 20, 549, DateTimeKind.Unspecified).AddTicks(536), new TimeSpan(0, -3, 0, 0, 0))
                         },
                         new
                         {
                             EmployeeId = 5,
                             SectorId = 6,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 20, 22, 29, 343, DateTimeKind.Unspecified).AddTicks(6174), new TimeSpan(0, -3, 0, 0, 0))
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 17, 14, 20, 549, DateTimeKind.Unspecified).AddTicks(575), new TimeSpan(0, -3, 0, 0, 0))
                         },
                         new
                         {
                             EmployeeId = 6,
                             SectorId = 5,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 20, 22, 29, 343, DateTimeKind.Unspecified).AddTicks(6176), new TimeSpan(0, -3, 0, 0, 0))
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 17, 14, 20, 549, DateTimeKind.Unspecified).AddTicks(577), new TimeSpan(0, -3, 0, 0, 0))
                         },
                         new
                         {
                             EmployeeId = 7,
                             SectorId = 4,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 20, 22, 29, 343, DateTimeKind.Unspecified).AddTicks(6177), new TimeSpan(0, -3, 0, 0, 0))
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 17, 14, 20, 549, DateTimeKind.Unspecified).AddTicks(579), new TimeSpan(0, -3, 0, 0, 0))
                         },
                         new
                         {
                             EmployeeId = 8,
                             SectorId = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 20, 22, 29, 343, DateTimeKind.Unspecified).AddTicks(6179), new TimeSpan(0, -3, 0, 0, 0))
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 17, 14, 20, 549, DateTimeKind.Unspecified).AddTicks(580), new TimeSpan(0, -3, 0, 0, 0))
                         },
                         new
                         {
                             EmployeeId = 9,
                             SectorId = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 20, 22, 29, 343, DateTimeKind.Unspecified).AddTicks(6181), new TimeSpan(0, -3, 0, 0, 0))
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 17, 14, 20, 549, DateTimeKind.Unspecified).AddTicks(582), new TimeSpan(0, -3, 0, 0, 0))
                         },
                         new
                         {
                             EmployeeId = 10,
                             SectorId = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 20, 22, 29, 343, DateTimeKind.Unspecified).AddTicks(6182), new TimeSpan(0, -3, 0, 0, 0))
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 1, 15, 17, 14, 20, 549, DateTimeKind.Unspecified).AddTicks(584), new TimeSpan(0, -3, 0, 0, 0))
                         });
-                });
-
-            modelBuilder.Entity("eCommerceConsole.Office.Models.EmployeeVehicle", b =>
-                {
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VehicleId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("VehicleStartDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("EmployeeId", "VehicleId");
-
-                    b.HasIndex("VehicleId");
-
-                    b.ToTable("EmployeeVehicle");
                 });
 
             modelBuilder.Entity("eCommerceConsole.Office.Models.Sector", b =>
@@ -329,50 +313,6 @@ namespace eCommerceConsole.Office.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vehicles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            EmployeeId = 0,
-                            Name = "Toyota Corolla",
-                            Plate = "ABC-1234"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            EmployeeId = 0,
-                            Name = "Honda Civic",
-                            Plate = "DEF-5678"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            EmployeeId = 0,
-                            Name = "Ford Ranger",
-                            Plate = "GHI-9012"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            EmployeeId = 0,
-                            Name = "Chevrolet Onix",
-                            Plate = "JKL-3456"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            EmployeeId = 0,
-                            Name = "Volkswagen Golf",
-                            Plate = "MNO-7890"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            EmployeeId = 0,
-                            Name = "Jeep Renegade",
-                            Plate = "PQR-1235"
-                        });
                 });
 
             modelBuilder.Entity("EmployeeEmployeeClass", b =>
@@ -388,6 +328,21 @@ namespace eCommerceConsole.Office.Migrations
                     b.HasIndex("EmployeesId");
 
                     b.ToTable("EmployeeEmployeeClass");
+                });
+
+            modelBuilder.Entity("EmployeeVehicle", b =>
+                {
+                    b.Property<int>("EmployeesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VehiclesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmployeesId", "VehiclesId");
+
+                    b.HasIndex("VehiclesId");
+
+                    b.ToTable("EmployeeVehicle");
                 });
 
             modelBuilder.Entity("eCommerceConsole.Office.Models.EmployeeSector", b =>
@@ -409,25 +364,6 @@ namespace eCommerceConsole.Office.Migrations
                     b.Navigation("Sector");
                 });
 
-            modelBuilder.Entity("eCommerceConsole.Office.Models.EmployeeVehicle", b =>
-                {
-                    b.HasOne("eCommerceConsole.Office.Models.Employee", "Employee")
-                        .WithMany("EmployeeVehicles")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eCommerceConsole.Office.Models.Vehicle", "Vehicle")
-                        .WithMany("EmployeeVehicles")
-                        .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
-
-                    b.Navigation("Vehicle");
-                });
-
             modelBuilder.Entity("EmployeeEmployeeClass", b =>
                 {
                     b.HasOne("eCommerceConsole.Office.Models.EmployeeClass", null)
@@ -443,21 +379,29 @@ namespace eCommerceConsole.Office.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("EmployeeVehicle", b =>
+                {
+                    b.HasOne("eCommerceConsole.Office.Models.Employee", null)
+                        .WithMany()
+                        .HasForeignKey("EmployeesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eCommerceConsole.Office.Models.Vehicle", null)
+                        .WithMany()
+                        .HasForeignKey("VehiclesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("eCommerceConsole.Office.Models.Employee", b =>
                 {
                     b.Navigation("EmployeeSectors");
-
-                    b.Navigation("EmployeeVehicles");
                 });
 
             modelBuilder.Entity("eCommerceConsole.Office.Models.Sector", b =>
                 {
                     b.Navigation("EmployeeSectors");
-                });
-
-            modelBuilder.Entity("eCommerceConsole.Office.Models.Vehicle", b =>
-                {
-                    b.Navigation("EmployeeVehicles");
                 });
 #pragma warning restore 612, 618
         }

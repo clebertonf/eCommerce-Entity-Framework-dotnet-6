@@ -9,6 +9,7 @@ public class EcommerceOfficeContext: DbContext
     
     public DbSet<Employee> Employees { get; set; }
     public DbSet<EmployeeClass> EmployeeClasses { get; set; }
+    // public DbSet<EmployeeVehicle> EmployeeVehicles { get; set; }
     public DbSet<Sector> Sectors { get; set; }
     public DbSet<Vehicle> Vehicles { get; set; }
     public DbSet<EmployeeSector> EmployeeSectors { get; set; }
@@ -21,9 +22,26 @@ public class EcommerceOfficeContext: DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         /*
+         * Many to Many EFcore > 5
+         * Ef core does it automatically from the model, but you can make it explicit.
+         */
+        modelBuilder.Entity<Employee>().HasMany(e => e.EmployeeClasses).WithMany(e => e.Employees);
+        modelBuilder.Entity<Employee>()
+            .HasMany(e => e.Vehicles)
+            .WithMany(e => e.Employees)
+            // .UsingEntity<EmployeeVehicle>(); // EFcore uses the class to mediate the relationship
+            .UsingEntity<EmployeeVehicle>(
+                e => e.HasOne(e => e.Vehicle)
+                    .WithMany(e => e.EmployeeVehicles)
+                    .HasForeignKey(e => e.VehicleId),
+                e => e.HasOne(e => e.Employee)
+                    .WithMany(e => e.EmployeeVehicles)
+                    .HasForeignKey(e => e.EmployeeId),
+                e => e.HasKey(e => new { e.EmployeeId, e.VehicleId })
+                );
+        /*
          * Many to Many EFcore < 5 with intermediate table
          */
-        
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Employee>()
             .HasMany<EmployeeSector>(e => e.EmployeeSectors)
@@ -79,6 +97,23 @@ public class EcommerceOfficeContext: DbContext
             new EmployeeSector { EmployeeId = 10, SectorId = 1, CreatedAt = DateTime.Now}
             );
 
+        modelBuilder.Entity<EmployeeClass>().HasData(
+            new EmployeeClass() { Id = 1, Name = "Class 1"},
+            new EmployeeClass() { Id = 2, Name = "Class 2"},
+            new EmployeeClass() { Id = 3, Name = "Class 3"},
+            new EmployeeClass() { Id = 4, Name = "Class 4"},
+            new EmployeeClass() { Id = 5, Name = "Class 5"},
+            new EmployeeClass() { Id = 6, Name = "Class 6"}
+            );
+        
+        modelBuilder.Entity<Vehicle>().HasData(
+            new Vehicle() { Id = 1, Name = "Toyota Corolla", Plate = "ABC-1234" },
+            new Vehicle() { Id = 2, Name = "Honda Civic", Plate = "DEF-5678" },
+            new Vehicle() { Id = 3, Name = "Ford Ranger", Plate = "GHI-9012" },
+            new Vehicle() { Id = 4, Name = "Chevrolet Onix", Plate = "JKL-3456" },
+            new Vehicle() { Id = 5, Name = "Volkswagen Golf", Plate = "MNO-7890" },
+            new Vehicle() { Id = 6, Name = "Jeep Renegade", Plate = "PQR-1235" }
+        );
         #endregion
     }
 }
