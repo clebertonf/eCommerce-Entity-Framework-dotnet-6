@@ -15,16 +15,39 @@ public class UserRepository : IUserRepository
 
     public async Task<IEnumerable<User>> GetUsersAsync()
     {
-        return await _context.Users.ToListAsync();
+        return await _context.Users.Include(u => u.Contact).ToListAsync();
     }
 
     public async Task<User?> GetUserByIdAsync(int userId)
     {
-        return await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+        return await _context.Users
+            .Include(u => u.Contact)
+            .Include(u => u.DeliveryAddresses)
+            .Include(u => u.ProductDepartments)
+            .FirstOrDefaultAsync(u => u.Id == userId);
     }
 
     public async Task AddUserAsync(User user)
     {
+        if (user.ProductDepartments is not null)
+        {
+            var departaments = user.ProductDepartments;
+            
+            user.ProductDepartments = new List<ProductDepartment>();
+            
+            foreach (var department in departaments)
+            {
+                if (department.Id > 0)
+                {
+                    user.ProductDepartments.Add(_context.ProductDepartments.Find(department.Id));
+                }
+                else
+                {
+                    user.ProductDepartments.Add(department);
+                }
+            }
+        }
+        
         await _context.AddAsync(user);
         await _context.SaveChangesAsync();
     }
