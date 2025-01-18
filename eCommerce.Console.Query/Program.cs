@@ -1,4 +1,5 @@
 ﻿using eCommerce.Console.Query;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 // First => LINQ EFcore SQL  After => .Tolist() -> C#
@@ -132,4 +133,78 @@ var usersAutoInclude = db.Users.ToList(); // IgnoreAutoIncludes() in specific pl
 foreach (var user in usersAutoInclude)
 {
     Console.WriteLine($"Users => {user.Id} - {user.Name} - {user.Contact?.CellPhone}");
+}
+
+Console.WriteLine("=================================================");
+// Explicit Load (Reference e collection) Fetch data from an entity after the data is already in memory
+db.ChangeTracker.Clear();
+var userExplicetLoad = db.Users.Find(1);
+Console.WriteLine($"UserExplicetLoad: {userExplicetLoad?.Name}");
+
+// Reference() 1:1
+db.Entry(userExplicetLoad).Reference(u => u.Contact).Load();
+Console.WriteLine($"UserExplicetLoad: Reference => {userExplicetLoad?.Contact.CellPhone}");
+
+// Collection: 1:M or M:M
+db.Entry(userExplicetLoad).Collection(u => u.DeliveryAddresses).Load();
+Console.WriteLine($"UserExplicetLoad: Collection => Total Address: {userExplicetLoad?.DeliveryAddresses.Count}");
+
+Console.WriteLine("=================================================");
+// LazyLoading with proxies. You will need to configure the context, install proxies packpage and the browsing properties must be virtual. (Not used very often). the best way is to use include.
+db.ChangeTracker.Clear();
+var usersLazyLoad = db.Users.Find(1);
+Console.WriteLine($"UsersLazyLoad: {usersLazyLoad?.Name} Address count: {usersLazyLoad?.DeliveryAddresses?.Count}");
+
+// LazyLaoding with interface ILazyLoader is in class UserWithILazyLoader
+// LazyLoading without proxies with delegate is in class UserWithDelegateLazyLoader
+
+Console.WriteLine("=================================================");
+// Splitquery
+// Ef core splits query into query. It's not very performant, but it can be used in specific cases.
+var usersplitQuery = db.Users.AsSplitQuery().Include(u => u.DeliveryAddresses).FirstOrDefault(u => u.Id == 1);
+Console.WriteLine($"UsersplitQuery: {usersplitQuery?.Name} Address count: {usersplitQuery?.DeliveryAddresses?.Count}");
+
+Console.WriteLine("=================================================");
+// Skip, take
+
+var usersSkipTake = db.Users!.Skip(1).Take(2);
+foreach (var user in usersSkipTake)
+{
+    Console.WriteLine($"UserSkipTake: {user.Name}");
+}
+
+Console.WriteLine("=================================================");
+// Select (Select which table fields to bring in) Improves performance by only bringing what is needed.
+var usersSelect = db.Users.Where(u => u.Id > 2).Select(u => new { Id = u.Id, Name = u.Name}).ToList();
+foreach (var user in usersSelect)
+{
+    Console.WriteLine($"Select: --- {user.Id} - {user.Name}");
+}
+
+Console.WriteLine("=================================================");
+// SqlRaw (Execute Sql directly for specific cases.)
+db.ChangeTracker.Clear();
+
+// FromSqlRaw
+var userSqlRaw = db.Users!.FromSqlRaw("SELECT * FROM [Users] WHERE id > 3").IgnoreAutoIncludes().ToList();
+foreach (var user in userSqlRaw)
+{
+    Console.WriteLine($"UserSqlRaw: => {user.Id} - {user.Name}");
+}
+
+var id = new SqlParameter("@id", 9);
+var userSqlRawTwo = db.Users!.FromSqlRaw($"SELECT * FROM [Users] WHERE Id = @id", id).IgnoreAutoIncludes().ToList();
+foreach (var user in userSqlRawTwo)
+{
+    Console.WriteLine($"userSqlRawTwo: => {user.Id} - {user.Name}");
+}
+
+Console.WriteLine("=================================================");
+// ExecuteSql SqlRawInterpolated (recommend using it because it doesn't generate any coupling with the bank used, and it's better for security reasons.)
+db.ChangeTracker.Clear();
+
+var usersFromSqlRawInterpolated = db.Users!.FromSqlInterpolated($"SELECT * FROM [Users] WHERE id = 1").IgnoreAutoIncludes().ToList();
+foreach (var user in usersFromSqlRawInterpolated)
+{
+    Console.WriteLine($"usersFromSqlRawInterpolated: => {user.Id} - {user.Name}");
 }
